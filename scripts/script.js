@@ -5,6 +5,7 @@ class Game {
   start() {
     const newObstacle = new Obstacle();
     this.obstacles.push(newObstacle);
+    this.attachEventListeners();
 
     //Time Interval to move obstacle
     setInterval(() => {
@@ -12,6 +13,18 @@ class Game {
         obstacleInstance.moveDown(); //move
       });
     }, 1000);
+  }
+
+  attachEventListeners() {
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        this.obstacles[0].moveLeft();
+      } else if (event.key === "ArrowRight") {
+        this.obstacles[0].moveRight();
+      } else if (event.key === "ArrowDown") {
+        this.obstacles[0].moveDown();
+      }
+    });
   }
 }
 
@@ -40,6 +53,14 @@ class Obstacle {
     // append to the dom
     const boardElm = document.getElementById("board");
     boardElm.appendChild(this.domElement);
+  }
+  moveLeft() {
+    this.positionX--;
+    this.domElement.style.left = this.positionX + "vw";
+  }
+  moveRight() {
+    this.positionX++;
+    this.domElement.style.left = this.positionX + "vw";
   }
   moveDown() {
     this.positionY--;

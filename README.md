@@ -20,7 +20,7 @@
             x add interval to obstacle that move downward every second
 
         [ ] Move obstacle
-            - event listener (key) + when obstacle presses, call moveLeft/right
+            - event listener (key) + when obstacle presses, call move left/right
 
 # Milestone 2:
 
