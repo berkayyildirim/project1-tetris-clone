@@ -2,22 +2,22 @@
 
 ## display obstacle + obstacle can move left/righ
 
-    [ ] Create project structure (html, css, js)
-    [ ] Create repo + upload to GitHub
+    [x] Create project structure (html, css, js)
+    [x] Create repo + upload to GitHub
 
-    [ ] Class Game
-        [ ] start()
-            - create an instance of the class Obstacles
-            - draw it
+    [x] Class Game
+        [x] start()
+            x create an instance of the class Obstacles
+            x draw it
 
-    [ ] Class Obstacles
-        - position
-        - size (w, h)
+    [x] Class Obstacle
+        x position
+        x size (w, h)
         - moveLeft()
         - moveRight()
 
-        [ ] Set Interval obstacle
-            - add interval to obstacle that move downward every second
+        [x] Set Interval obstacle
+            x add interval to obstacle that move downward every second
 
         [ ] Move obstacle
             - event listener (key) + when obstacle presses, call moveLeft/right
