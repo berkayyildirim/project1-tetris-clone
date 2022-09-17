@@ -10,7 +10,7 @@ class Game {
     //Time Interval to move obstacle
     const moveInterval = setInterval(() => {
       for (let i = 0; i < this.obstacles.length; i++) {
-        if (this.obstacles[i].positionY !== 0) {
+        if (this.obstacles[i].positionY > 0) {
           this.obstacles[i].moveDown(); //move
           if (this.obstacles[i].positionY === 0) {
             this.obstacles[i].positionY === 0;
