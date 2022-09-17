@@ -8,26 +8,39 @@ class Game {
     this.attachEventListeners();
 
     //Time Interval to move obstacle
-    const moveInteval = setInterval(() => {
-      this.obstacles.forEach((obstacleInstance) => {
-        obstacleInstance.moveDown(); //move
-        if (obstacleInstance.positionY === 0) {
-          clearInterval(moveInteval);
+    const moveInterval = setInterval(() => {
+      for (let i = 0; i < this.obstacles.length; i++) {
+        if (this.obstacles[i].positionY !== 0) {
+          this.obstacles[i].moveDown(); //move
+          if (this.obstacles[i].positionY === 0) {
+            this.obstacles[i].positionY === 0;
+            this.createObstacleAfterFirstObstacle();
+            break;
+          }
         }
-        //this.stopObstacleIfBottomLine(obstacleInstance);
-      });
+      }
     }, 100);
+  }
+
+  //Add obstacle when the first obstacle reach to the bottom line
+  createObstacleAfterFirstObstacle() {
+    const newObstacle = new Obstacle();
+    this.obstacles.push(newObstacle);
   }
 
   // Event listener method for right/left/down
   attachEventListeners() {
     document.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") {
-        this.obstacles[0].moveLeft();
-      } else if (event.key === "ArrowRight") {
-        this.obstacles[0].moveRight();
-      } else if (event.key === "ArrowDown") {
-        this.obstacles[0].moveDown();
+      for (let i = 0; i < this.obstacles.length; i++) {
+        if (i === this.obstacles.length - 1) {
+          if (event.key === "ArrowLeft") {
+            this.obstacles[i].moveLeft();
+          } else if (event.key === "ArrowRight") {
+            this.obstacles[i].moveRight();
+          } else if (event.key === "ArrowDown") {
+            this.obstacles[i].moveDown();
+          }
+        }
       }
     });
   }
