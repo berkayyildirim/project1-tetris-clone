@@ -8,13 +8,18 @@ class Game {
     this.attachEventListeners();
 
     //Time Interval to move obstacle
-    setInterval(() => {
+    const moveInteval = setInterval(() => {
       this.obstacles.forEach((obstacleInstance) => {
         obstacleInstance.moveDown(); //move
+        if (obstacleInstance.positionY === 0) {
+          clearInterval(moveInteval);
+        }
+        //this.stopObstacleIfBottomLine(obstacleInstance);
       });
-    }, 1000);
+    }, 100);
   }
 
+  // Event listener method for right/left/down
   attachEventListeners() {
     document.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") {
@@ -26,6 +31,13 @@ class Game {
       }
     });
   }
+
+  //Clear move interval
+  //   stopObstacleIfBottomLine(obstacleInstance) {
+  //     if (obstacleInstance.positionY === 0) {
+  //       console.log("bottom line");
+  //     }
+  //   }
 }
 
 class Obstacle {

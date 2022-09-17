@@ -19,13 +19,13 @@
         [x] Set Interval obstacle
             x add interval to obstacle that move downward every second
 
-        [ ] Move obstacle
+        [x] Move obstacle
             - event listener (key) + when obstacle presses, call move left/right
 
 # Milestone 2:
 
-    - add obstacles appearing in the UI
     - stop first obstacle when reach to the bottom
+    - add obstacles appearing in the UI
     - add a new obstacle when there is a collision
     - stop following obstacle when there is a collision
     - we detect if there's a collision in the starting line (Game Over)
