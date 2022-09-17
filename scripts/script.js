@@ -12,7 +12,7 @@ class Game {
       for (let i = 0; i < this.obstacles.length; i++) {
         if (this.obstacles[i].positionY > 0) {
           this.obstacles[i].moveDown(); //move
-          if (this.obstacles[i].positionY === 0) {
+          if (this.obstacles[i].positionY <= 0) {
             this.obstacles[i].positionY === 0;
             this.createObstacleAfterFirstObstacle();
             break;
