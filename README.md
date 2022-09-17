@@ -25,7 +25,7 @@
 # Milestone 2:
 
     x stop first obstacle when reach to the bottom
-    - add obstacles appearing in the UI
+    x add obstacles appearing in the UI
     - add a new obstacle when there is a collision
     - stop following obstacle when there is a collision
     - we detect if there's a collision in the starting line (Game Over)
