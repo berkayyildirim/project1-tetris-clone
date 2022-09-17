@@ -5,6 +5,13 @@ class Game {
   start() {
     const newObstacle = new Obstacle();
     this.obstacles.push(newObstacle);
+
+    //Time Interval to move obstacle
+    setInterval(() => {
+      this.obstacles.forEach((obstacleInstance) => {
+        obstacleInstance.moveDown(); //move
+      });
+    }, 1000);
   }
 }
 
