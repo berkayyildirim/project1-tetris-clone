@@ -8,15 +8,25 @@ class Game {
     this.attachEventListeners();
 
     //Time Interval to move obstacle
-    const moveInterval = setInterval(() => {
+    setInterval(() => {
       for (let i = 0; i < this.obstacles.length; i++) {
         if (this.obstacles[i].positionY > 0) {
           this.obstacles[i].moveDown(); //move
+          //Stop the obstacle if it reaches the bottom line
           if (this.obstacles[i].positionY <= 0) {
             this.obstacles[i].positionY === 0;
             this.createObstacleAfterFirstObstacle();
-            break;
           }
+          //Stop the obstacle if there is a collision
+          this.obstacles.forEach((obstacle) => {
+            if (
+              this.obstacles[i].positionY ===
+                obstacle.positionY + obstacle.height &&
+              this.obstacles[i].positionX === obstacle.positionX
+            ) {
+              this.obstacles[i].positionY = 50;
+            }
+          });
         }
       }
     }, 100);
@@ -33,6 +43,7 @@ class Game {
     document.addEventListener("keydown", (event) => {
       for (let i = 0; i < this.obstacles.length; i++) {
         if (i === this.obstacles.length - 1) {
+          // Move the i object in the obstacles array
           if (event.key === "ArrowLeft") {
             this.obstacles[i].moveLeft();
           } else if (event.key === "ArrowRight") {
@@ -44,13 +55,6 @@ class Game {
       }
     });
   }
-
-  //Clear move interval
-  //   stopObstacleIfBottomLine(obstacleInstance) {
-  //     if (obstacleInstance.positionY === 0) {
-  //       console.log("bottom line");
-  //     }
-  //   }
 }
 
 class Obstacle {

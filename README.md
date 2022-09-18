@@ -13,8 +13,8 @@
     [x] Class Obstacle
         x position
         x size (w, h)
-        - moveLeft()
-        - moveRight()
+        x moveLeft()
+        x moveRight()
 
         [x] Set Interval obstacle
             x add interval to obstacle that move downward every second
@@ -26,8 +26,8 @@
 
     x stop first obstacle when reach to the bottom
     x add obstacles appearing in the UI
+    - detect collision and redefine the position of obstacle
     - add a new obstacle when there is a collision
-    - stop following obstacle when there is a collision
     - we detect if there's a collision in the starting line (Game Over)
 
     - note: for this milestone, it's ok if obstacles appear always at the same position
