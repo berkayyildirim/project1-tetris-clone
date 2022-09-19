@@ -26,8 +26,9 @@
 
     x stop first obstacle when reach to the bottom
     x add obstacles appearing in the UI
-    - detect collision and redefine the position of obstacle
-    - add a new obstacle when there is a collision
+    x detect collision and redefine the position of obstacle
+    x add a new obstacle when there is a collision
+    - create table for tetrominos
     - we detect if there's a collision in the starting line (Game Over)
 
     - note: for this milestone, it's ok if obstacles appear always at the same position

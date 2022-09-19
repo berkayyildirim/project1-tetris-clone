@@ -1,6 +1,7 @@
 class Game {
   constructor() {
     this.obstacles = []; //will store instances of the class Obstacle
+    this.freezeObstacles = [];
   }
   start() {
     const newObstacle = new Obstacle();
@@ -9,33 +10,45 @@ class Game {
 
     //Time Interval to move obstacle
     setInterval(() => {
-      for (let i = 0; i < this.obstacles.length; i++) {
-        if (this.obstacles[i].positionY > 0) {
-          this.obstacles[i].moveDown(); //move
-          //Stop the obstacle if it reaches the bottom line
-          if (this.obstacles[i].positionY <= 0) {
-            this.obstacles[i].positionY === 0;
-            this.createObstacleAfterFirstObstacle();
-          }
-          //Stop the obstacle if there is a collision
-          this.obstacles.forEach((obstacle) => {
-            if (
-              this.obstacles[i].positionY ===
-                obstacle.positionY + obstacle.height &&
-              this.obstacles[i].positionX === obstacle.positionX
-            ) {
-              this.obstacles[i].positionY = 50;
-            }
-          });
+      this.obstacles.forEach((obstacle) => {
+        obstacle.moveDown(); //move
+        //Stop the obstacle if it reaches the bottom line
+        if (obstacle.positionY <= 0) {
+          obstacle.domElement.style.bottom = "0vh";
+          this.freezeObstacle(obstacle);
+          this.removeObstacle(obstacle);
+          this.createObstacle();
         }
-      }
+        //Stop the obstacle if there is a collision
+        this.freezeObstacles.forEach((freezeObstacle) => {
+          if (
+            obstacle.positionY ===
+              freezeObstacle.positionY + freezeObstacle.height &&
+            obstacle.positionX === freezeObstacle.positionX
+          ) {
+            obstacle.domElement.style.bottom =
+              freezeObstacle.positionY + freezeObstacle.height + "vh";
+            this.freezeObstacle(obstacle);
+            this.removeObstacle(obstacle);
+            this.createObstacle();
+          }
+        });
+      });
     }, 100);
   }
 
-  //Add obstacle when the first obstacle reach to the bottom line
-  createObstacleAfterFirstObstacle() {
+  // Freeze the obstacles
+  freezeObstacle(obstacle) {
+    this.freezeObstacles.push(obstacle);
+  }
+  // Add the obstacles
+  createObstacle() {
     const newObstacle = new Obstacle();
     this.obstacles.push(newObstacle);
+  }
+  // Remove the obstacles
+  removeObstacle(obstacle) {
+    this.obstacles.pop(obstacle);
   }
 
   // Event listener method for right/left/down
