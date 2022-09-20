@@ -28,16 +28,16 @@
     x add obstacles appearing in the UI
     x detect collision and redefine the position of obstacle
     x add a new obstacle when there is a collision
-    - create table for tetrominos
     x we detect if there's a collision in the starting line (Game Over)
 
-    - note: for this milestone, it's ok if obstacles appear always at the same position
-
-      [ ] Class Obstacle
+    x Boundaries
 
 # Milestone 3: make the game more interesting & fix bugs
 
-    - create new obstacle in random position
+    x create new obstacle in random position
+    - Random positions
+    - Change the obstacles shape
+    - Clearing lines
 
 # Functionalities:
 

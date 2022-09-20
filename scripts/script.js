@@ -21,8 +21,12 @@ class Game {
           console.log("gameover");
         }
         //Stop the obstacle if it reaches the bottom line
-        if (obstacle.positionY <= 0) {
-          obstacle.domElement.style.bottom = "0vh";
+        let board = document.getElementById("board");
+        let boardStyle = window.getComputedStyle(board);
+        let boardHeightInVh = this.convertPXToVH(boardStyle.height);
+        const bottomLine = 100 - boardHeightInVh;
+        if (obstacle.positionY <= bottomLine) {
+          obstacle.domElement.style.bottom = bottomLine + "vh";
           this.freezeObstacle(obstacle);
           this.removeObstacle(obstacle);
           this.createObstacle();
@@ -32,6 +36,8 @@ class Game {
           if (
             obstacle.positionY ===
               freezeObstacle.positionY + freezeObstacle.height &&
+            obstacle.positionX + obstacle.width > freezeObstacle.positionX &&
+            obstacle.positionX < freezeObstacle.positionX + obstacle.width &&
             obstacle.positionX === freezeObstacle.positionX
           ) {
             obstacle.domElement.style.bottom =
@@ -42,7 +48,18 @@ class Game {
           }
         });
       });
-    }, 10);
+    }, 100);
+  }
+
+  //Convert px to vw
+  convertPXToVW(px) {
+    let pxNumber = Number(px.replace("px", ""));
+    return pxNumber * (100 / document.documentElement.clientWidth);
+  }
+  //Convert px to vh
+  convertPXToVH(px) {
+    let pxNumber = Number(px.replace("px", ""));
+    return pxNumber * (100 / document.documentElement.clientHeight);
   }
 
   // Freeze the obstacles
@@ -64,10 +81,23 @@ class Game {
     document.addEventListener("keydown", (event) => {
       for (let i = 0; i < this.obstacles.length; i++) {
         if (i === this.obstacles.length - 1) {
+          let board = document.getElementById("board");
+          let boardStyle = window.getComputedStyle(board);
+          const leftLine = 50 - this.convertPXToVW(boardStyle.width) / 2;
+          const rightLine =
+            50 +
+            this.convertPXToVW(boardStyle.width) / 2 -
+            this.obstacles[i].width;
           // Move the i object in the obstacles array
-          if (event.key === "ArrowLeft") {
+          if (
+            event.key === "ArrowLeft" &&
+            this.obstacles[i].positionX >= leftLine
+          ) {
             this.obstacles[i].moveLeft();
-          } else if (event.key === "ArrowRight") {
+          } else if (
+            event.key === "ArrowRight" &&
+            this.obstacles[i].positionX <= rightLine
+          ) {
             this.obstacles[i].moveRight();
           } else if (event.key === "ArrowDown") {
             this.obstacles[i].moveDown();
