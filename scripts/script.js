@@ -37,8 +37,7 @@ class Game {
             obstacle.positionY ===
               freezeObstacle.positionY + freezeObstacle.height &&
             obstacle.positionX + obstacle.width > freezeObstacle.positionX &&
-            obstacle.positionX < freezeObstacle.positionX + obstacle.width &&
-            obstacle.positionX === freezeObstacle.positionX
+            obstacle.positionX < freezeObstacle.positionX + obstacle.width
           ) {
             obstacle.domElement.style.bottom =
               freezeObstacle.positionY + freezeObstacle.height + "vh";
