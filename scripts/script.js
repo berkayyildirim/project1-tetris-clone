@@ -9,9 +9,17 @@ class Game {
     this.attachEventListeners();
 
     //Time Interval to move obstacle
-    setInterval(() => {
+    const myInterval = setInterval(() => {
       this.obstacles.forEach((obstacle) => {
         obstacle.moveDown(); //move
+        //Game over
+        if (
+          this.freezeObstacles.length > 1 &&
+          this.freezeObstacles[this.freezeObstacles.length - 1].positionY === 80
+        ) {
+          clearInterval(myInterval);
+          console.log("gameover");
+        }
         //Stop the obstacle if it reaches the bottom line
         if (obstacle.positionY <= 0) {
           obstacle.domElement.style.bottom = "0vh";
@@ -34,7 +42,7 @@ class Game {
           }
         });
       });
-    }, 100);
+    }, 10);
   }
 
   // Freeze the obstacles
@@ -74,7 +82,8 @@ class Obstacle {
   constructor() {
     this.width = 10;
     this.height = 10;
-    this.positionX = Math.floor(Math.random() * (100 - this.width + 1)); // random number between 0 and 100-width
+    this.positionX = 50;
+    //this.positionX = Math.floor(Math.random() * (100 - this.width + 1)); // random number between 0 and 100-width
     this.positionY = 90;
     this.domElement = null;
 
