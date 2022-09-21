@@ -60,7 +60,8 @@ Milestone 1: display player + player can move left/righ
         [ ] start()
             x create an instance of the class Player
             - draw it
-
+4 - 16 hane no - 4 hane şifre
+5270 8030 2612 2621
     [x] Class Player
         - position
         - size (w, h)

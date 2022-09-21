@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.obstacles = []; //will store instances of the class Obstacle
     this.freezeObstacles = [];
+    this.removeLineObstacles = [];
     this.chart = null;
     this.score = 0;
     this.level = 1;
@@ -13,7 +14,7 @@ class Game {
     this.attachEventListeners();
 
     //Time Interval to move obstacle
-    const myInterval = setInterval(() => {
+    const moveInterval = setInterval(() => {
       this.obstacles.forEach((obstacle) => {
         obstacle.moveDown(); //move
 
@@ -22,14 +23,14 @@ class Game {
           this.freezeObstacles.length > 1 &&
           this.freezeObstacles[this.freezeObstacles.length - 1].positionY === 80
         ) {
-          clearInterval(myInterval);
+          clearInterval(moveInterval);
           console.log("gameover");
         }
         //Stop the obstacle if it reaches the bottom line
         let board = document.getElementById("board");
         let boardStyle = window.getComputedStyle(board);
         let boardHeightInVh = this.convertPXToVH(boardStyle.height);
-        const bottomLine = 100 - 10 - boardHeightInVh;
+        const bottomLine = Math.floor(100 - 10 - boardHeightInVh);
         if (obstacle.positionY <= bottomLine) {
           obstacle.domElement.style.bottom = bottomLine + "vh";
           this.freezeObstacle(obstacle);
@@ -51,24 +52,62 @@ class Game {
             this.createObstacle();
           }
         });
+
+        //Remove bottom line 10 if there are 6 obstacles in the bottom line 10
+        let countBottomLine10 = 0;
+        for (let i = 0; i < this.freezeObstacles.length; i++) {
+          if (this.freezeObstacles[i].positionY === 10) {
+            countBottomLine10++;
+          }
+        }
+        // If the count is 6 and the positionY === 10 then remove all those elements
+        if (countBottomLine10 === 6) {
+          console.log("countBottomLine10");
+          let filteredFreezeArray = this.freezeObstacles.filter(
+            (item) => item.positionY === 10
+          );
+          //From freeze array to remove array
+          filteredFreezeArray.forEach((filteredObstacle) => {
+            filteredObstacle.domElement.remove();
+            //this.addObstacleToRemoveLineObstacles(filteredObstacle);
+            //this.removeObstacleFromFreezeObstacles(filteredObstacle);
+            //filteredObstacle.domElement.style.backgroundColor = "#4848B9";
+          });
+          this.freezeObstacles.forEach((freezeObstacle) => {
+            console.log(freezeObstacle.positionY);
+            freezeObstacle.positionY = freezeObstacle.positionY - 5;
+          });
+          console.log(`Freezed obstacles: ${this.freezeObstacles.length}`);
+          //console.log(`Removed obstacles: ${this.removeLineObstacles.length}`);
+        }
+
+        //Remove bottom line 15
       });
-    }, 100);
+    }, 1000);
   }
 
   //Convert px to vw
   convertPXToVW(px) {
     let pxNumber = Number(px.replace("px", ""));
-    return pxNumber * (100 / document.documentElement.clientWidth);
+    return Math.round(pxNumber * (100 / document.documentElement.clientWidth));
   }
   //Convert px to vh
   convertPXToVH(px) {
     let pxNumber = Number(px.replace("px", ""));
-    return pxNumber * (100 / document.documentElement.clientHeight);
+    return Math.round(pxNumber * (100 / document.documentElement.clientHeight));
   }
 
   // Freeze the obstacles
   freezeObstacle(obstacle) {
     this.freezeObstacles.push(obstacle);
+  }
+  // RemoveLine the obstacles
+  addObstacleToRemoveLineObstacles(obstacle) {
+    this.removeLineObstacles.push(obstacle);
+  }
+  // Remove the obstacles
+  removeObstacleFromFreezeObstacles(obstacle) {
+    this.freezeObstacles.pop(obstacle);
   }
   // Add the obstacles
   createObstacle() {
@@ -142,11 +181,10 @@ class Obstacle {
   constructor() {
     this.width = 5;
     this.height = 5;
-    //this.positionX = 50;
+    this.positionX = 50;
     const positionXOptions = [35, 40, 45, 50, 55, 60];
     const random = Math.floor(Math.random() * positionXOptions.length);
-    this.positionX = positionXOptions[random];
-    console.log(this.positionX);
+    //this.positionX = positionXOptions[random];
     this.positionY = 100 - 10 - this.height;
     this.domElement = null;
 
