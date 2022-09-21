@@ -2,6 +2,10 @@ class Game {
   constructor() {
     this.obstacles = []; //will store instances of the class Obstacle
     this.freezeObstacles = [];
+    this.chart = null;
+    this.score = 0;
+    this.level = 1;
+    this.lines = 0;
   }
   start() {
     const newObstacle = new Obstacle();
@@ -12,6 +16,7 @@ class Game {
     const myInterval = setInterval(() => {
       this.obstacles.forEach((obstacle) => {
         obstacle.moveDown(); //move
+
         //Game over
         if (
           this.freezeObstacles.length > 1 &&
@@ -80,13 +85,19 @@ class Game {
     document.addEventListener("keydown", (event) => {
       for (let i = 0; i < this.obstacles.length; i++) {
         if (i === this.obstacles.length - 1) {
+          //Define boundaries
           let board = document.getElementById("board");
           let boardStyle = window.getComputedStyle(board);
+          console.log(boardStyle.width);
+          // Left boundary
           const leftLine = 50 - this.convertPXToVW(boardStyle.width) / 2;
+          console.log(leftLine);
+          //Right boundary
           const rightLine =
             50 +
             this.convertPXToVW(boardStyle.width) / 2 -
             this.obstacles[i].width;
+          console.log(rightLine);
           // Move the i object in the obstacles array
           if (
             event.key === "ArrowLeft" &&
@@ -99,7 +110,29 @@ class Game {
           ) {
             this.obstacles[i].moveRight();
           } else if (event.key === "ArrowDown") {
-            this.obstacles[i].moveDown();
+            this.obstacles[i].moveDownKeyboard();
+            this.score = this.score + 5;
+            //Add +5 score if ArrowDown happens
+            const scoreElm = document.getElementById("score");
+            scoreElm.innerHTML = this.score;
+            //Add +1 level every 50 score
+            if (this.score === 250) {
+              this.level = this.level + 1;
+              const levelElm = document.getElementById("level");
+              levelElm.innerHTML = this.level;
+            } else if (this.score === 500) {
+              this.level = this.level + 1;
+              const levelElm = document.getElementById("level");
+              levelElm.innerHTML = this.level;
+            } else if (this.score === 750) {
+              this.level = this.level + 1;
+              const levelElm = document.getElementById("level");
+              levelElm.innerHTML = this.level;
+            } else if (this.score === 1000) {
+              this.level = this.level + 1;
+              const levelElm = document.getElementById("level");
+              levelElm.innerHTML = this.level;
+            }
           }
         }
       }
@@ -109,8 +142,8 @@ class Game {
 
 class Obstacle {
   constructor() {
-    this.width = 10;
-    this.height = 10;
+    this.width = 5;
+    this.height = 5;
     this.positionX = 50;
     //this.positionX = Math.floor(Math.random() * (100 - this.width + 1)); // random number between 0 and 100-width
     this.positionY = 90;
@@ -144,6 +177,10 @@ class Obstacle {
   }
   moveDown() {
     this.positionY--;
+    this.domElement.style.bottom = this.positionY + "vh";
+  }
+  moveDownKeyboard() {
+    this.positionY = this.positionY - 5;
     this.domElement.style.bottom = this.positionY + "vh";
   }
 }
