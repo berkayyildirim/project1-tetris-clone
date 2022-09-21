@@ -35,9 +35,9 @@
 # Milestone 3: make the game more interesting & fix bugs
 
     x create new obstacle in random position
-    - Random positions
-    - Change the obstacles shape
+    x Random positions
     - Clearing lines
+    - Change the obstacles shape
 
 # Functionalities:
 

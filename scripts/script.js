@@ -52,7 +52,7 @@ class Game {
           }
         });
       });
-    }, 100);
+    }, 1000);
   }
 
   //Convert px to vw
@@ -88,17 +88,15 @@ class Game {
           //Define boundaries
           let board = document.getElementById("board");
           let boardStyle = window.getComputedStyle(board);
-          console.log(boardStyle.width);
           // Left boundary
           const leftLine = 50 - this.convertPXToVW(boardStyle.width) / 2;
-          console.log(leftLine);
           //Right boundary
           const rightLine =
             50 +
             this.convertPXToVW(boardStyle.width) / 2 -
             this.obstacles[i].width;
-          console.log(rightLine);
           // Move the i object in the obstacles array
+
           if (
             event.key === "ArrowLeft" &&
             this.obstacles[i].positionX >= leftLine
@@ -144,8 +142,11 @@ class Obstacle {
   constructor() {
     this.width = 5;
     this.height = 5;
-    this.positionX = 50;
-    //this.positionX = Math.floor(Math.random() * (100 - this.width + 1)); // random number between 0 and 100-width
+    //this.positionX = 50;
+    const positionXOptions = [35, 40, 45, 50, 55, 60];
+    const random = Math.floor(Math.random() * positionXOptions.length);
+    this.positionX = positionXOptions[random];
+    console.log(this.positionX);
     this.positionY = 90;
     this.domElement = null;
 
@@ -168,20 +169,32 @@ class Obstacle {
     boardElm.appendChild(this.domElement);
   }
   moveLeft() {
-    this.positionX--;
+    this.positionX = this.positionX - this.width;
     this.domElement.style.left = this.positionX + "vw";
   }
   moveRight() {
-    this.positionX++;
+    this.positionX = this.positionX + this.width;
     this.domElement.style.left = this.positionX + "vw";
   }
   moveDown() {
-    this.positionY--;
+    this.positionY = this.positionY - this.height;
     this.domElement.style.bottom = this.positionY + "vh";
   }
   moveDownKeyboard() {
-    this.positionY = this.positionY - 5;
+    this.positionY = this.positionY - this.height;
+    //this.positionY = this.positionY - this.height * 2;
     this.domElement.style.bottom = this.positionY + "vh";
+  }
+
+  //Convert px to vw
+  convertPXToVW(px) {
+    let pxNumber = Number(px.replace("px", ""));
+    return pxNumber * (100 / document.documentElement.clientWidth);
+  }
+  //Convert px to vh
+  convertPXToVH(px) {
+    let pxNumber = Number(px.replace("px", ""));
+    return pxNumber * (100 / document.documentElement.clientHeight);
   }
 }
 
