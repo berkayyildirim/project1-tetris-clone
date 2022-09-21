@@ -36,7 +36,8 @@
 
     x create new obstacle in random position
     x Random positions
-    - Clearing lines
+    x Clearing lines
+    - Moving objects after clearing
     - Change the obstacles shape
 
 # Functionalities:
