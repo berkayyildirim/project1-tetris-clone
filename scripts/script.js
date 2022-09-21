@@ -29,7 +29,7 @@ class Game {
         let board = document.getElementById("board");
         let boardStyle = window.getComputedStyle(board);
         let boardHeightInVh = this.convertPXToVH(boardStyle.height);
-        const bottomLine = 100 - boardHeightInVh;
+        const bottomLine = 100 - 10 - boardHeightInVh;
         if (obstacle.positionY <= bottomLine) {
           obstacle.domElement.style.bottom = bottomLine + "vh";
           this.freezeObstacle(obstacle);
@@ -52,7 +52,7 @@ class Game {
           }
         });
       });
-    }, 1000);
+    }, 100);
   }
 
   //Convert px to vw
@@ -147,7 +147,7 @@ class Obstacle {
     const random = Math.floor(Math.random() * positionXOptions.length);
     this.positionX = positionXOptions[random];
     console.log(this.positionX);
-    this.positionY = 90;
+    this.positionY = 100 - 10 - this.height;
     this.domElement = null;
 
     this.createDomElement();
