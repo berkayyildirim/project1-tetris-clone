@@ -68,17 +68,13 @@ class Game {
           );
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
+            filteredObstacle.domElement.style.backgroundColor = "#777670";
             filteredObstacle.domElement.remove();
-            //this.addObstacleToRemoveLineObstacles(filteredObstacle);
-            //this.removeObstacleFromFreezeObstacles(filteredObstacle);
-            //filteredObstacle.domElement.style.backgroundColor = "#4848B9";
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
-            console.log(freezeObstacle.positionY);
-            freezeObstacle.positionY = freezeObstacle.positionY - 5;
+            freezeObstacle.domElement.style.bottom =
+              freezeObstacle.positionY - freezeObstacle.height + "vh";
           });
-          console.log(`Freezed obstacles: ${this.freezeObstacles.length}`);
-          //console.log(`Removed obstacles: ${this.removeLineObstacles.length}`);
         }
 
         //Remove bottom line 15
@@ -100,14 +96,6 @@ class Game {
   // Freeze the obstacles
   freezeObstacle(obstacle) {
     this.freezeObstacles.push(obstacle);
-  }
-  // RemoveLine the obstacles
-  addObstacleToRemoveLineObstacles(obstacle) {
-    this.removeLineObstacles.push(obstacle);
-  }
-  // Remove the obstacles
-  removeObstacleFromFreezeObstacles(obstacle) {
-    this.freezeObstacles.pop(obstacle);
   }
   // Add the obstacles
   createObstacle() {
