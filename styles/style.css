@@ -11,6 +11,8 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-image: url("https://image.shutterstock.com/image-illustration/abstract-blue-gradient-background-texture-260nw-1532623910.jpg");
+  background-size: 75%;
 }
 
 #board {
@@ -22,20 +24,22 @@ main {
   margin-top: 10vh;
   width: 30vw;
   height: 80vh;
-  background-color: rgb(72, 72, 186);
+  background-color: #214973;
   /* display: flex;
   flex-wrap: wrap; */
 }
 
 .obstacle {
-  background-color: rgb(219, 213, 50);
+  background-color: rgb(251, 255, 0);
   position: absolute;
+  border: solid;
+  border-radius: 0.5em;
 }
 
 #chart {
   align-items: center;
   text-align: center;
-  background-color: rgb(119, 118, 113);
+  background-color: rgb(142, 142, 142);
   width: 10vw;
   height: 30vh;
   right: 10vw;
