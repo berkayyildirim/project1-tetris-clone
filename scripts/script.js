@@ -110,7 +110,9 @@ class Game {
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
             filteredObstacle.domElement.style.backgroundColor = "#777670";
-            filteredObstacle.domElement.remove();
+            setTimeout(() => {
+              filteredObstacle.domElement.remove();
+            }, 200);
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
             if (freezeObstacle.positionY > 10) {
@@ -135,7 +137,9 @@ class Game {
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
             filteredObstacle.domElement.style.backgroundColor = "#777670";
-            filteredObstacle.domElement.remove();
+            setTimeout(() => {
+              filteredObstacle.domElement.remove();
+            }, 200);
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
             if (freezeObstacle.positionY > 15) {
@@ -161,7 +165,9 @@ class Game {
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
             filteredObstacle.domElement.style.backgroundColor = "#777670";
-            filteredObstacle.domElement.remove();
+            setTimeout(() => {
+              filteredObstacle.domElement.remove();
+            }, 200);
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
             if (freezeObstacle.positionY > 20) {
@@ -187,7 +193,9 @@ class Game {
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
             filteredObstacle.domElement.style.backgroundColor = "#777670";
-            filteredObstacle.domElement.remove();
+            setTimeout(() => {
+              filteredObstacle.domElement.remove();
+            }, 200);
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
             if (freezeObstacle.positionY > 25) {
@@ -213,7 +221,9 @@ class Game {
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
             filteredObstacle.domElement.style.backgroundColor = "#777670";
-            filteredObstacle.domElement.remove();
+            setTimeout(() => {
+              filteredObstacle.domElement.remove();
+            }, 200);
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
             if (freezeObstacle.positionY > 30) {
@@ -239,7 +249,9 @@ class Game {
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
             filteredObstacle.domElement.style.backgroundColor = "#777670";
-            filteredObstacle.domElement.remove();
+            setTimeout(() => {
+              filteredObstacle.domElement.remove();
+            }, 200);
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
             if (freezeObstacle.positionY > 35) {
@@ -265,7 +277,9 @@ class Game {
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
             filteredObstacle.domElement.style.backgroundColor = "#777670";
-            filteredObstacle.domElement.remove();
+            setTimeout(() => {
+              filteredObstacle.domElement.remove();
+            }, 200);
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
             if (freezeObstacle.positionY > 40) {
