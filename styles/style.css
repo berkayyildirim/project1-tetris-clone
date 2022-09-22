@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-color: black;
+  background-color: #070707;
 }
 
 main {
@@ -12,11 +12,18 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #070707;
 }
 
 #game-music {
   display: none;
+}
+
+#main-image {
+  position: fixed;
+  width: 25vw;
+  top: 2vh;
+  left: 10vh;
 }
 
 #board {
@@ -56,4 +63,14 @@ main {
 
 #mute-button {
   margin-top: 10px;
+  position: fixed;
+  top: 20vh;
+  left: 25.5vh;
+}
+
+#start-button {
+  margin-top: 10px;
+  position: fixed;
+  top: 25vh;
+  left: 23vh;
 }

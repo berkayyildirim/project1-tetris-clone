@@ -440,9 +440,15 @@ class Obstacle {
   }
 }
 
-//To start the game
+//To initialize the game
 const game = new Game();
-game.start();
+
+//To start the game
+const startButton = document.getElementById("start-button");
+startButton.onclick = function () {
+  game.start();
+  startButton.style.display = "none";
+};
 
 //To manage the sound
 const muteButton = document.getElementById("mute-button");

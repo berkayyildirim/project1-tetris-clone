@@ -6,16 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tetris</title>
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
   <link rel="stylesheet" href="./styles/style.css">
   </link>
 </head>
 
 <body>
   <audio id="game-music" autoplay loop>
-    <source src="./game-music.mp3" type="audio/mpeg">
+    <source src="./assets/game-music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
   <main id="main">
+      <img id="main-image" src="./assets/home page.png"/>
+      <button id="start-button">START GAME</button>
+      <button id="mute-button">MUTE</button>
       <div id="board">
         <h1 id="gameover">GAME OVER</h1>
       </div>
@@ -26,7 +30,6 @@
         <div id="level">1</div>
         <h3>Lines</h3>
         <div id="lines">0</div>
-        <button id="mute-button">MUTE</button>
       </div>
   </main>
 
