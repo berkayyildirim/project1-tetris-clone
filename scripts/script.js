@@ -7,13 +7,40 @@ class Game {
     this.score = 0;
     this.level = 1;
     this.lines = 0;
+    this.audioOn = true;
+    this.gameInterval;
+    this.intervalInMs = 500;
+    this.gameStopped = false;
+  }
+  toggleSound() {
+    const audio = document.getElementById("game-music");
+    const muteButton = document.getElementById("mute-button");
+    if (audio && muteButton) {
+      if (this.audioOn) {
+        audio.pause();
+        muteButton.innerHTML = "MUTED";
+      }
+      if (!this.audioOn) {
+        muteButton.innerHTML = "MUTE";
+        audio.play();
+      }
+      this.audioOn = !this.audioOn;
+    }
   }
   start() {
     const newObstacle = new Obstacle();
     this.obstacles.push(newObstacle);
     this.attachEventListeners();
-
     //Time Interval to move obstacle
+    this.startGameInterval();
+  }
+
+  clearGameInterval() {
+    clearInterval(this.gameInterval);
+    this.gameStopped = true;
+  }
+
+  startGameInterval() {
     const moveInterval = setInterval(() => {
       this.obstacles.forEach((obstacle) => {
         obstacle.moveDown(); //move
@@ -248,7 +275,9 @@ class Game {
           });
         }
       });
-    }, 500);
+    }, this.intervalInMs);
+    this.gameInterval = moveInterval;
+    this.gameStopped = false;
   }
 
   //Increase lines
@@ -411,5 +440,24 @@ class Obstacle {
   }
 }
 
+//To start the game
 const game = new Game();
 game.start();
+
+//To manage the sound
+const muteButton = document.getElementById("mute-button");
+muteButton.onclick = function () {
+  game.toggleSound();
+};
+
+//To manage the game
+document.addEventListener("keyup", (event) => {
+  if (event.code === "Space") {
+    game.toggleSound();
+    if (game.gameStopped) {
+      game.startGameInterval();
+    } else {
+      game.clearGameInterval();
+    }
+  }
+});

@@ -5,7 +5,6 @@ body {
   background-color: black;
 }
 
-/* ---New Version--- */
 main {
   width: 100%;
   height: 100%;
@@ -14,6 +13,10 @@ main {
   justify-content: center;
   align-items: center;
   background-color: black;
+}
+
+#game-music {
+  display: none;
 }
 
 #board {
@@ -49,4 +52,8 @@ main {
   top: 10vh;
   padding-bottom: 1rem;
   position: fixed;
+}
+
+#mute-button {
+  margin-top: 10px;
 }
