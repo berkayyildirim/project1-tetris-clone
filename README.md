@@ -8,7 +8,6 @@
 
 ## History
 
-<hr>
 <div align="justify">
   Tetris is a surprising game. On paper, at least, it seems unlikely that   something so basic should have done so well beyond the year 1975.     Nevertheless, it’s been a consistently popular video game for decades.  It was invented in Russia, and it was never expected to be as popular    as it became.
 </div>
@@ -16,7 +15,6 @@
 
 ## Goals
 
-<hr>
 <div align="justify">
 The aim in Tetris is simple; you bring down blocks from the top of the screen. You can move the blocks around, either left to right and/or you can rotate them. The blocks fall at a certain rate, but you can make them fall faster if you’re sure of your positioning. Your objective is to get all the blocks to fill all the empty space in a line at the bottom of the screen; whenever you do this, you’ll find that the blocks vanish and you get awarded some points.
 
@@ -27,7 +25,6 @@ A goal gives us a reason to play the game. Tetris offers an incredibly simple re
 
 ## Rules
 
-<hr>
 <div align="justify">
   Tetris has very simple rules: you can only move the pieces in specific ways; your game is over if your pieces reach the top of the screen; and you can only remove pieces from the screen by filling all the blank space in a line.
 </div>
@@ -41,8 +38,6 @@ A goal gives us a reason to play the game. Tetris offers an incredibly simple re
 ![Game over](./assets/game-over.png)
 
 ## How to play
-
-<hr>
 
 - Click the "Start Game" button to start.
 - Press space to pause.
@@ -59,8 +54,6 @@ A goal gives us a reason to play the game. Tetris offers an incredibly simple re
 ![Game over](./assets/start-game.png)
 
 ## Points
-
-<hr>
 
 - +5 score after pressing the down
 - Every 250 score, +1 level
