@@ -47,7 +47,7 @@ class Game {
         //Game over
         if (
           this.freezeObstacles.length > 1 &&
-          this.freezeObstacles[this.freezeObstacles.length - 1].positionY === 80
+          this.freezeObstacles[this.freezeObstacles.length - 1].positionY === 60
         ) {
           clearInterval(moveInterval);
           const gameOverElm = document.getElementById("gameover");
