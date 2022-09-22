@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  height: 100vh;
+  background-color: black;
 }
 
 /* ---New Version--- */
@@ -11,22 +13,23 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-image: url("https://image.shutterstock.com/image-illustration/abstract-blue-gradient-background-texture-260nw-1532623910.jpg");
-  background-size: 75%;
+  background-color: black;
 }
 
 #board {
-  /* ---Old Version--- */
-  /* height: 100vh; */
-  /* background-color: rgb(72, 72, 186); */
-  /* position: relative; */
-  /* ---New Version--- */
-  margin-top: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30vw;
   height: 80vh;
   background-color: #214973;
-  /* display: flex;
-  flex-wrap: wrap; */
+}
+
+#gameover {
+  display: none;
+  font-weight: bold;
+  color: red;
+  z-index: 2;
 }
 
 .obstacle {

@@ -23,6 +23,10 @@ class Game {
           this.freezeObstacles[this.freezeObstacles.length - 1].positionY === 80
         ) {
           clearInterval(moveInterval);
+          const gameOverElm = document.getElementById("gameover");
+          if (gameOverElm) {
+            gameOverElm.style.display = "block";
+          }
           console.log("gameover");
         }
 
@@ -244,7 +248,7 @@ class Game {
           });
         }
       });
-    }, 1000);
+    }, 500);
   }
 
   //Increase lines
@@ -339,13 +343,24 @@ class Game {
 
 class Obstacle {
   constructor() {
-    this.width = 5;
-    this.height = 5;
-    this.positionX = 50;
+    //Create random width
+    //this.width = 5;
+    const widthOptions = [5];
+    const randomWidth = Math.floor(Math.random() * widthOptions.length);
+    this.width = widthOptions[randomWidth];
+    //Create random height
+    //this.height = 5;
+    const heightOptions = [5];
+    const randomHeight = Math.floor(Math.random() * heightOptions.length);
+    this.height = heightOptions[randomHeight];
+    //Create random position x
+    //this.positionX = 50;
     const positionXOptions = [35, 40, 45, 50, 55, 60];
     const random = Math.floor(Math.random() * positionXOptions.length);
-    //this.positionX = positionXOptions[random];
+    this.positionX = positionXOptions[random];
+    //Create position y
     this.positionY = 100 - 10 - this.height;
+    //First element is null
     this.domElement = null;
 
     this.createDomElement();
