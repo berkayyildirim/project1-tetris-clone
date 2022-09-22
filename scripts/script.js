@@ -472,7 +472,7 @@ muteButton.onclick = function () {
 
 //To manage the game
 document.addEventListener("keyup", (event) => {
-  if (event.code === "Space") {
+  if (event.code === "Space" && game.gameInterval) {
     game.toggleSound();
     if (game.gameStopped) {
       game.startGameInterval();
