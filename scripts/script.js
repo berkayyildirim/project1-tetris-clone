@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.obstacles = []; //will store instances of the class Obstacle
     this.freezeObstacles = [];
-    this.removeLineObstacles = [];
+    this.clearedObstacles = [];
     this.chart = null;
     this.score = 0;
     this.level = 1;
@@ -17,7 +17,6 @@ class Game {
     const moveInterval = setInterval(() => {
       this.obstacles.forEach((obstacle) => {
         obstacle.moveDown(); //move
-
         //Game over
         if (
           this.freezeObstacles.length > 1 &&
@@ -26,6 +25,16 @@ class Game {
           clearInterval(moveInterval);
           console.log("gameover");
         }
+
+        //Line point
+        if (this.clearedObstacles.length === 6) {
+          this.addLinePoint(1);
+        } else if (this.clearedObstacles.length === 12) {
+          this.addLinePoint(2);
+        } else if (this.clearedObstacles.length === 18) {
+          this.addLinePoint(3);
+        }
+
         //Stop the obstacle if it reaches the bottom line
         let board = document.getElementById("board");
         let boardStyle = window.getComputedStyle(board);
@@ -62,24 +71,187 @@ class Game {
         }
         // If the count is 6 and the positionY === 10 then remove all those elements
         if (countBottomLine10 === 6) {
-          console.log("countBottomLine10");
           let filteredFreezeArray = this.freezeObstacles.filter(
             (item) => item.positionY === 10
           );
+
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
+            this.clearedObstacles.push(filteredObstacle);
             filteredObstacle.domElement.style.backgroundColor = "#777670";
             filteredObstacle.domElement.remove();
           });
           this.freezeObstacles.forEach((freezeObstacle) => {
-            freezeObstacle.domElement.style.bottom =
-              freezeObstacle.positionY - freezeObstacle.height + "vh";
+            if (freezeObstacle.positionY > 10) {
+              freezeObstacle.domElement.style.bottom =
+                freezeObstacle.positionY - freezeObstacle.height + "vh";
+            }
+          });
+        }
+        //Remove bottom line 15 if there are 6 obstacles in the bottom line 15
+        let countBottomLine15 = 0;
+        for (let i = 0; i < this.freezeObstacles.length; i++) {
+          if (this.freezeObstacles[i].positionY === 15) {
+            countBottomLine15++;
+          }
+        }
+        // If the count is 6 and the positionY === 15 then remove all those elements
+        if (countBottomLine15 === 6) {
+          let filteredFreezeArray = this.freezeObstacles.filter(
+            (item) => item.positionY === 15
+          );
+          //From freeze array to remove array
+          filteredFreezeArray.forEach((filteredObstacle) => {
+            this.clearedObstacles.push(filteredObstacle);
+            filteredObstacle.domElement.style.backgroundColor = "#777670";
+            filteredObstacle.domElement.remove();
+          });
+          this.freezeObstacles.forEach((freezeObstacle) => {
+            if (freezeObstacle.positionY > 15) {
+              freezeObstacle.domElement.style.bottom =
+                freezeObstacle.positionY - freezeObstacle.height + "vh";
+            }
           });
         }
 
-        //Remove bottom line 15
+        //Remove bottom line 20 if there are 6 obstacles in the bottom line 20
+        let countBottomLine20 = 0;
+        for (let i = 0; i < this.freezeObstacles.length; i++) {
+          if (this.freezeObstacles[i].positionY === 20) {
+            countBottomLine20++;
+          }
+        }
+        // If the count is 6 and the positionY === 20 then remove all those elements
+        if (countBottomLine20 === 6) {
+          let filteredFreezeArray = this.freezeObstacles.filter(
+            (item) => item.positionY === 20
+          );
+          //From freeze array to remove array
+          filteredFreezeArray.forEach((filteredObstacle) => {
+            this.clearedObstacles.push(filteredObstacle);
+            filteredObstacle.domElement.style.backgroundColor = "#777670";
+            filteredObstacle.domElement.remove();
+          });
+          this.freezeObstacles.forEach((freezeObstacle) => {
+            if (freezeObstacle.positionY > 20) {
+              freezeObstacle.domElement.style.bottom =
+                freezeObstacle.positionY - freezeObstacle.height + "vh";
+            }
+          });
+        }
+
+        //Remove bottom line 25 if there are 6 obstacles in the bottom line 25
+        let countBottomLine25 = 0;
+        for (let i = 0; i < this.freezeObstacles.length; i++) {
+          if (this.freezeObstacles[i].positionY === 25) {
+            countBottomLine25++;
+          }
+        }
+        // If the count is 6 and the positionY === 25 then remove all those elements
+        if (countBottomLine25 === 6) {
+          let filteredFreezeArray = this.freezeObstacles.filter(
+            (item) => item.positionY === 25
+          );
+          //From freeze array to remove array
+          filteredFreezeArray.forEach((filteredObstacle) => {
+            this.clearedObstacles.push(filteredObstacle);
+            filteredObstacle.domElement.style.backgroundColor = "#777670";
+            filteredObstacle.domElement.remove();
+          });
+          this.freezeObstacles.forEach((freezeObstacle) => {
+            if (freezeObstacle.positionY > 25) {
+              freezeObstacle.domElement.style.bottom =
+                freezeObstacle.positionY - freezeObstacle.height + "vh";
+            }
+          });
+        }
+
+        //Remove bottom line 30 if there are 6 obstacles in the bottom line 30
+        let countBottomLine30 = 0;
+        for (let i = 0; i < this.freezeObstacles.length; i++) {
+          if (this.freezeObstacles[i].positionY === 30) {
+            countBottomLine30++;
+          }
+        }
+        // If the count is 6 and the positionY === 30 then remove all those elements
+        if (countBottomLine30 === 6) {
+          let filteredFreezeArray = this.freezeObstacles.filter(
+            (item) => item.positionY === 30
+          );
+          //From freeze array to remove array
+          filteredFreezeArray.forEach((filteredObstacle) => {
+            this.clearedObstacles.push(filteredObstacle);
+            filteredObstacle.domElement.style.backgroundColor = "#777670";
+            filteredObstacle.domElement.remove();
+          });
+          this.freezeObstacles.forEach((freezeObstacle) => {
+            if (freezeObstacle.positionY > 30) {
+              freezeObstacle.domElement.style.bottom =
+                freezeObstacle.positionY - freezeObstacle.height + "vh";
+            }
+          });
+        }
+
+        //Remove bottom line 35 if there are 6 obstacles in the bottom line 35
+        let countBottomLine35 = 0;
+        for (let i = 0; i < this.freezeObstacles.length; i++) {
+          if (this.freezeObstacles[i].positionY === 35) {
+            countBottomLine35++;
+          }
+        }
+        // If the count is 6 and the positionY === 35 then remove all those elements
+        if (countBottomLine35 === 6) {
+          let filteredFreezeArray = this.freezeObstacles.filter(
+            (item) => item.positionY === 35
+          );
+          //From freeze array to remove array
+          filteredFreezeArray.forEach((filteredObstacle) => {
+            this.clearedObstacles.push(filteredObstacle);
+            filteredObstacle.domElement.style.backgroundColor = "#777670";
+            filteredObstacle.domElement.remove();
+          });
+          this.freezeObstacles.forEach((freezeObstacle) => {
+            if (freezeObstacle.positionY > 35) {
+              freezeObstacle.domElement.style.bottom =
+                freezeObstacle.positionY - freezeObstacle.height + "vh";
+            }
+          });
+        }
+
+        //Remove bottom line 40 if there are 6 obstacles in the bottom line 40
+        let countBottomLine40 = 0;
+        for (let i = 0; i < this.freezeObstacles.length; i++) {
+          if (this.freezeObstacles[i].positionY === 40) {
+            countBottomLine40++;
+          }
+        }
+        // If the count is 6 and the positionY === 40 then remove all those elements
+        if (countBottomLine40 === 6) {
+          let filteredFreezeArray = this.freezeObstacles.filter(
+            (item) => item.positionY === 40
+          );
+          //From freeze array to remove array
+          filteredFreezeArray.forEach((filteredObstacle) => {
+            this.clearedObstacles.push(filteredObstacle);
+            filteredObstacle.domElement.style.backgroundColor = "#777670";
+            filteredObstacle.domElement.remove();
+          });
+          this.freezeObstacles.forEach((freezeObstacle) => {
+            if (freezeObstacle.positionY > 40) {
+              freezeObstacle.domElement.style.bottom =
+                freezeObstacle.positionY - freezeObstacle.height + "vh";
+            }
+          });
+        }
       });
     }, 1000);
+  }
+
+  //Increase lines
+  addLinePoint(point) {
+    //Add +1 lines if clearing happens
+    const linesElm = document.getElementById("lines");
+    linesElm.innerHTML = point;
   }
 
   //Convert px to vw
