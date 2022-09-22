@@ -335,10 +335,10 @@ class Game {
           let board = document.getElementById("board");
           let boardStyle = window.getComputedStyle(board);
           // Left boundary
-          const leftLine = 50 - this.convertPXToVW(boardStyle.width) / 2;
+          const leftLine = 55 - this.convertPXToVW(boardStyle.width) / 2;
           //Right boundary
           const rightLine =
-            50 +
+            45 +
             this.convertPXToVW(boardStyle.width) / 2 -
             this.obstacles[i].width;
           // Move the i object in the obstacles array

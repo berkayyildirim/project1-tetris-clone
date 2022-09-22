@@ -64,13 +64,13 @@ main {
 #mute-button {
   margin-top: 10px;
   position: fixed;
-  top: 20vh;
-  left: 25.5vh;
+  top: 25vh;
+  left: 30vh;
 }
 
 #start-button {
   margin-top: 10px;
   position: fixed;
-  top: 25vh;
-  left: 23vh;
+  top: 30vh;
+  left: 26vh;
 }
