@@ -105,10 +105,14 @@ class Game {
           let filteredFreezeArray = this.freezeObstacles.filter(
             (item) => item.positionY === 10
           );
-
+          let newFreezeObstacles = this.freezeObstacles.filter(
+            (item) => item.positionY !== 10
+          );
+          this.freezeObstacles = newFreezeObstacles;
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
+
             filteredObstacle.domElement.style.backgroundColor = "#777670";
             setTimeout(() => {
               filteredObstacle.domElement.remove();
@@ -133,6 +137,10 @@ class Game {
           let filteredFreezeArray = this.freezeObstacles.filter(
             (item) => item.positionY === 15
           );
+          let newFreezeObstacles = this.freezeObstacles.filter(
+            (item) => item.positionY !== 15
+          );
+          this.freezeObstacles = newFreezeObstacles;
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
@@ -161,6 +169,10 @@ class Game {
           let filteredFreezeArray = this.freezeObstacles.filter(
             (item) => item.positionY === 20
           );
+          let newFreezeObstacles = this.freezeObstacles.filter(
+            (item) => item.positionY !== 20
+          );
+          this.freezeObstacles = newFreezeObstacles;
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
@@ -189,6 +201,10 @@ class Game {
           let filteredFreezeArray = this.freezeObstacles.filter(
             (item) => item.positionY === 25
           );
+          let newFreezeObstacles = this.freezeObstacles.filter(
+            (item) => item.positionY !== 25
+          );
+          this.freezeObstacles = newFreezeObstacles;
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
@@ -217,6 +233,10 @@ class Game {
           let filteredFreezeArray = this.freezeObstacles.filter(
             (item) => item.positionY === 30
           );
+          let newFreezeObstacles = this.freezeObstacles.filter(
+            (item) => item.positionY !== 30
+          );
+          this.freezeObstacles = newFreezeObstacles;
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
@@ -245,6 +265,10 @@ class Game {
           let filteredFreezeArray = this.freezeObstacles.filter(
             (item) => item.positionY === 35
           );
+          let newFreezeObstacles = this.freezeObstacles.filter(
+            (item) => item.positionY !== 35
+          );
+          this.freezeObstacles = newFreezeObstacles;
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);
@@ -273,6 +297,10 @@ class Game {
           let filteredFreezeArray = this.freezeObstacles.filter(
             (item) => item.positionY === 40
           );
+          let newFreezeObstacles = this.freezeObstacles.filter(
+            (item) => item.positionY !== 40
+          );
+          this.freezeObstacles = newFreezeObstacles;
           //From freeze array to remove array
           filteredFreezeArray.forEach((filteredObstacle) => {
             this.clearedObstacles.push(filteredObstacle);

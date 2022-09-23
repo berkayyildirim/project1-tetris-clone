@@ -59,6 +59,10 @@ A goal gives us a reason to play the game. Tetris offers an incredibly simple re
 - Every 250 score, +1 level
 - Every vanishing line, +1 level
 
+## Link
+
+[Click to play the deployed game](https://berkayyildirim.github.io/project1-tetris-clone/)
+
 <!-- # Milestone 1:
 
 ## display obstacle + obstacle can move left/righ
