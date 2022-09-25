@@ -9,7 +9,7 @@ class Game {
     this.lines = 0;
     this.audioOn = true;
     this.gameInterval;
-    this.intervalInMs = 500;
+    this.intervalInMs = 100;
     this.gameStopped = false;
   }
   toggleSound() {
@@ -382,29 +382,29 @@ class Game {
           ) {
             this.obstacles[i].moveRight();
           } else if (event.key === "ArrowDown") {
-            this.obstacles[i].moveDownKeyboard();
-            this.score = this.score + 5;
-            //Add +5 score if ArrowDown happens
-            const scoreElm = document.getElementById("score");
-            scoreElm.innerHTML = this.score;
-            //Add +1 level every 50 score
-            if (this.score === 250) {
-              this.level = this.level + 1;
-              const levelElm = document.getElementById("level");
-              levelElm.innerHTML = this.level;
-            } else if (this.score === 500) {
-              this.level = this.level + 1;
-              const levelElm = document.getElementById("level");
-              levelElm.innerHTML = this.level;
-            } else if (this.score === 750) {
-              this.level = this.level + 1;
-              const levelElm = document.getElementById("level");
-              levelElm.innerHTML = this.level;
-            } else if (this.score === 1000) {
-              this.level = this.level + 1;
-              const levelElm = document.getElementById("level");
-              levelElm.innerHTML = this.level;
-            }
+            // this.obstacles[i].moveDownKeyboard();
+            // this.score = this.score + 5;
+            // //Add +5 score if ArrowDown happens
+            // const scoreElm = document.getElementById("score");
+            // scoreElm.innerHTML = this.score;
+            // //Add +1 level every 50 score
+            // if (this.score === 250) {
+            //   this.level = this.level + 1;
+            //   const levelElm = document.getElementById("level");
+            //   levelElm.innerHTML = this.level;
+            // } else if (this.score === 500) {
+            //   this.level = this.level + 1;
+            //   const levelElm = document.getElementById("level");
+            //   levelElm.innerHTML = this.level;
+            // } else if (this.score === 750) {
+            //   this.level = this.level + 1;
+            //   const levelElm = document.getElementById("level");
+            //   levelElm.innerHTML = this.level;
+            // } else if (this.score === 1000) {
+            //   this.level = this.level + 1;
+            //   const levelElm = document.getElementById("level");
+            //   levelElm.innerHTML = this.level;
+            // }
           }
         }
       }
@@ -465,7 +465,7 @@ class Obstacle {
     this.domElement.style.bottom = this.positionY + "vh";
   }
   moveDownKeyboard() {
-    this.positionY = this.positionY - this.height;
+    this.positionY = this.positionY - this.height / 5;
     //this.positionY = this.positionY - this.height * 2;
     this.domElement.style.bottom = this.positionY + "vh";
   }
